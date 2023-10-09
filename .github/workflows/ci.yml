@@ -21,3 +21,14 @@ jobs:
         with:
           # This part is also where you can pass other options, for example:
           prettier_options: --write **/*.{js,md}
+
+  Link-Check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check links with linkcheck
+        uses: filiph/linkcheck@2.0.23
+        with:
+          # Make sure the actual branch is checked out when running on pull requests
+          entryPoint: ${{ github.head_ref }}
+          arguments: <URL>
